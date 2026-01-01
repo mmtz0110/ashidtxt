@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>ashidtxt · Post</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="logo">ashidtxt</div>
+</nav>
+
+<main class="post-detail">
+  <img id="thumb" />
+  <h1 id="title"></h1>
+  <p id="content"></p>
+</main>
+
+<script>
+const id = new URLSearchParams(window.location.search).get("id");
+
+fetch(`/api/posts/${id}`)
+  .then(res => res.json())
+  .then(post => {
+    document.getElementById("thumb").src = post.thumbnail_url;
+    document.getElementById("title").innerText = post.title;
+    document.getElementById("content").innerText = post.content;
+  });
+</script>
+
+</body>
+</html>
