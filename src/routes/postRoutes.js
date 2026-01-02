@@ -1,0 +1,29 @@
+import express from "express";
+import {
+  createPost,
+  getPublicPosts,
+  getMyPosts,
+  getPostById,
+  deletePost
+} from "../controllers/postController.js";
+
+import { authMiddleware } from "src/middlewares/authMiddleware.js";
+
+const router = express.Router();
+
+// create post
+router.post("/", authMiddleware, createPost);
+
+// public feed
+router.get("/", getPublicPosts);
+
+// my posts
+router.get("/me", authMiddleware, getMyPosts);
+
+// detail post
+router.get("/:id", getPostById);
+
+// delete post
+router.delete("/:id", authMiddleware, deletePost);
+
+export default router;

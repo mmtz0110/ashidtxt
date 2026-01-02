@@ -8,26 +8,22 @@
 <body>
 
 <nav class="navbar">
-  <div class="logo">ashidtxt</div>
+    <div class="nav-logo">
+      <a href="index.html">ashidtxt</a>
+    </div>
+
+    <div class="nav-menu">
+      <a href="about.html">About</a>
+      <a href="#">Send NGL</a>
+    </div>
 </nav>
 
 <main class="post-detail">
   <img id="thumb" />
   <h1 id="title"></h1>
-  <p id="content"></p>
+  <div id="content"></div>
 </main>
 
-<script>
-const id = new URLSearchParams(window.location.search).get("id");
-
-fetch(`/api/posts/${id}`)
-  .then(res => res.json())
-  .then(post => {
-    document.getElementById("thumb").src = post.thumbnail_url;
-    document.getElementById("title").innerText = post.title;
-    document.getElementById("content").innerText = post.content;
-  });
-</script>
-
 </body>
+  <script src = "post.js"></script>
 </html>
