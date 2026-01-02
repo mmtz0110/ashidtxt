@@ -1,8 +1,7 @@
 import dotenv from "dotenv";
-import app from "src/app.js";
-import postRoutes from "src/routes/postRoutes.js";
-
 dotenv.config();
+import app from "./app.js";
+import postRoutes from "./routes/postRoutes.js";
 
 const PORT = process.env.PORT || 3000;
 app.use("/api/posts", postRoutes);
